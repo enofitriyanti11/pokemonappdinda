@@ -1,6 +1,7 @@
 import React from 'react'
 
 function Detail() {
+  
   return (
     <div class="py-10 mx-60">
         <div class="bg-white/25 p-5 rounded-lg grid grid-cols-2">
