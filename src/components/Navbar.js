@@ -21,7 +21,7 @@ import { FaBars, FaTimes } from "react-icons/fa"
                 <Link to="/Mypokemons">My Pokemons</Link>
             </li>
             <li>
-                <Link to="/Logout">Logout</Link>
+                <Link to="/Login">Logout</Link>
             </li>
         </ul>
         <div className="hamburger" onClick={handleClick}>

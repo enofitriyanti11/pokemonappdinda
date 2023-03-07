@@ -1,14 +1,9 @@
-
-
-  .auth-form-container, .login-form, .register-form {
+.auth-form-container, .login-form{
     display: flex;
     flex-direction: column;
-    text-align: center;
-    display: flex;
-    min-height: 70vh;
+    min-height: 20vh;
     align-items: center;
-    justify-content: center;
-    color: white;
+    color: #424372;
   }
   
   .auth-form-container {
@@ -32,11 +27,10 @@
   
   button{
     border: none;
-    background-color: white;
     padding: 10px;
     border-radius: 10px;
     cursor: pointer;
-    color: #8687bb;
+    color: #424372;
   }
   
   .link-btn{
