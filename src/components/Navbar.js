@@ -21,6 +21,9 @@ import { FaBars, FaTimes } from "react-icons/fa"
                 <Link to="/Mypokemons">My Pokemons</Link>
             </li>
             <li>
+                <Link to="/Todolist">Todo list</Link>
+            </li>
+            <li>
                 <Link to="/Login">Logout</Link>
             </li>
         </ul>

@@ -6,8 +6,10 @@ import Mypokemons from "./routes/Mypokemons";
 import Login from "./components/Login";
 import Detail from "./components/Detail";
 import Register from "./components/Register";
+import Todolist from "./components/Todolist";
 
 import { BrowserRouter, Route, Routes} from "react-router-dom";
+
 
 
 
@@ -24,6 +26,7 @@ function App() {
         <Route path="/Detail" element={<Detail />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
+        <Route path="/Todolist" element={<Todolist />} />
       </Routes>
     </BrowserRouter>
     
