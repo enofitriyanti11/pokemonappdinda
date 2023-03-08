@@ -5,8 +5,10 @@ import Pokemons from "./routes/Pokemons";
 import Mypokemons from "./routes/Mypokemons";
 import Login from "./components/Login";
 import Detail from "./components/Detail";
+import Register from "./components/Register";
 
 import { BrowserRouter, Route, Routes} from "react-router-dom";
+
 
 
 
@@ -15,13 +17,14 @@ function App() {
     <>
     
     <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/Pokemons" element={<Pokemons />} />
-      <Route path="/Mypokemons" element={<Mypokemons />} />
-      <Route path="/Detail" element={<Detail />} />
-      <Route path="/Login" element={<Login />} />
-    </Routes>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Pokemons" element={<Pokemons />} />
+        <Route path="/Mypokemons" element={<Mypokemons />} />
+        <Route path="/Detail" element={<Detail />} />
+        <Route path="/Login" element={<Login />} />
+        <Route path="/Register" element={<Register />} />
+      </Routes>
     </BrowserRouter>
     
     

@@ -6,15 +6,7 @@
     color: #424372;
   }
   
-  .auth-form-container {
-    padding: 5rem; 
-    border: 1px solid white;
-    border-radius: 10px;
-    margin: 0.5rem;
-  }
-  
   label {
-    text-align: left;
     padding: 0.25rem 0;
   }
   
@@ -26,18 +18,13 @@
   }
   
   button{
-    border: none;
     padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-    color: #424372;
   }
   
   .link-btn{
     background: none;
     color: white;
     text-decoration: underline;
-  
   }
   
   
