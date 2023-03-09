@@ -7,10 +7,9 @@ import Login from "./components/Login";
 import Detail from "./components/Detail";
 import Register from "./components/Register";
 import Todolist from "./components/Todolist";
+import Todo from "./components/Todo";
 
 import { BrowserRouter, Route, Routes} from "react-router-dom";
-
-
 
 
 
@@ -27,6 +26,7 @@ function App() {
         <Route path="/Login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
         <Route path="/Todolist" element={<Todolist />} />
+        <Route path="/Todo" element={<Todo />} />
       </Routes>
     </BrowserRouter>
     
