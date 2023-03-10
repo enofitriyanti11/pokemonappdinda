@@ -5,77 +5,77 @@ function Itemcard() {
   const pokemons = [
     {
       name: 'pikachu',
-      image: require("../img/pokemon1.png"),
+      image: '/img/pokemon1.png',
       price: '$25'
     },
     {
       name: 'Vaporeon',
-      image: require("../img/pokemon2.png"),
+      image: '/img/pokemon2.png',
       price: '$32'
     },
     {
       name: 'Bulbasaur',
-      image: require("../img/pokemon3.png"),
+      image: '/img/pokemon3.png',
       price: '$29'
     },
     {
       name: 'Charmander',
-      image: require("../img/pokemon4.png"),
+      image: '/img/pokemon4.png',
       price: '$35'
     },
     {
       name: 'Squirtle',
-      image: require("../img/pokemon5.png"),
+      image: '/img/pokemon5.png',
       price: '$28'
     },
     {
       name: 'Beedrill',
-      image: require("../img/pokemon6.png"),
+      image: '/img/pokemon6.png',
       price: '$33'
     },
     {
       name: 'Charizard',
-      image: require("../img/pokemon7.png"),
+      image: '/img/pokemon7.png',
       price: '$37'
     },
     {
       name: 'Butterfree',
-      image: require("../img/pokemon8.png"),
+      image: '/img/pokemon8.png',
       price: '$27'
     },
     {
       name: 'Kakuna',
-      image: require("../img/pokemon9.png"),
+      image: '/img/pokemon9.png',
       price: '$25'
     },
     {
       name: 'Venusaur',
-      image: require("../img/pokemon10.png"),
+      image: '/img/pokemon10.png',
       price: '$24'
     },
     {
       name: 'Charmeleon',
-      image: require("../img/pokemon11.png"),
+      image: '/img/pokemon11.png',
       price: '$30'
     },
     {
       name: 'wartortle',
-      image: require("../img/pokemon13.png"),
+      image: '/img/pokemon12.png',
       price: '$34'
     },
     {
       name: 'Blastoise',
-      image: require("../img/pokemon6.png"),
+      image: '/img/pokemon13.png',
       price: '$33'
     },
     {
       name: 'Weedle',
-      image: require("../img/pokemon14.png"),
+      image: '/img/pokemon14.png',
       price: '$30'
     },
     {
       name: 'Caterpie',
-      image: require("../img/pokemon15.png"),
+      image: '/img/pokemon15.png',
       price: '$29'
     },
   ];
@@ -89,8 +89,8 @@ function Itemcard() {
           return (
             <div class="bg-white/25 p-5 rounded-lg ">
               <Link to="/Detail" >
-              <img src={pokemon.image} alt="" class="h-44 mx-auto" />
-              <h4 class="uppercase text-center text-[#424372] font-bold p-3">{pokemon.name}</h4>
+                <img src={pokemon.image} alt="" class="h-44 mx-auto" />
+                <h4 class="uppercase text-center text-[#424372] font-bold p-3">{pokemon.name}</h4>
               </Link>
               <div class="flex justify-between">
                 <div>
