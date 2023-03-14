@@ -1,12 +1,12 @@
 import React from 'react'
+import Mypokemonitem from '../components/Mypokemonitem'
 import Navbar from '../components/Navbar'
-import PokemonCard from '../components/PokemonCard'
 
 function Mypokemons() {
   return (
     <>
     <Navbar />
-    <PokemonCard />
+    <Mypokemonitem />
     </>
   )
 }
