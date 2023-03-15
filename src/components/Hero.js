@@ -13,8 +13,8 @@ function Hero() {
       <div className="content">
         <p>Catch Em!</p>
         <h1 className=" text-white">Pokemon-GO</h1>
-        <Link to="/Pokemons" className="btn">Pokemons</Link>
-        <Link to="/Mypokemons" className="btn">My Pokemons</Link>
+        <Link to="/Pokemons" className="btn glass">Pokemons</Link>
+        <Link to="/Mypokemons" className="btn glass">My Pokemons</Link>
       </div>
     </div>
   )

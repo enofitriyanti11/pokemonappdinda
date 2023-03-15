@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 function Itemcard() {
-  
+
   const pokemonsData = [
     {
       id: '1',
@@ -99,23 +101,20 @@ function Itemcard() {
   const addPokemon = (item) => {
     const myPokemonslocalstorage = localStorage.getItem('pokemonData')
 
-        console.log(myPokemonslocalstorage)
+    console.log(myPokemonslocalstorage)
 
-        if (myPokemonslocalstorage) {
-            const myPokemons = JSON.parse(myPokemonslocalstorage);
-            const newMyPokemons = [...myPokemons, { id: item.id, name: item.name, image: item.image, price: item.price }];
-            localStorage.setItem('pokemonData', JSON.stringify(newMyPokemons));
-        } else {
-            const newMyPokemons = [{ id: item.id, name: item.name, image: item.image, price: item.price }];
-            localStorage.setItem('pokemonData', JSON.stringify(newMyPokemons));
-        }
+    if (myPokemonslocalstorage) {
+      const myPokemons = JSON.parse(myPokemonslocalstorage);
+      const newMyPokemons = [...myPokemons, { id: item.id, name: item.name, image: item.image, price: item.price }];
+      localStorage.setItem('pokemonData', JSON.stringify(newMyPokemons));
+    } else {
+      const newMyPokemons = [{ id: item.id, name: item.name, image: item.image, price: item.price }];
+      localStorage.setItem('pokemonData', JSON.stringify(newMyPokemons));
+    }
 
+      toast("Add to My Pokemons Success !");
 
-    // const myPokemons = JSON.parse(localStorage.getItem('pokemonsData'));
-    // const newMyPokemons = [...myPokemons, {id: item.id, name : item.name , image: item.image, price: item.price}];
-
-    // localStorage.setItem('pokemonsData', JSON.stringify(newMyPokemons));
-}
+  }
 
   return (
     <div>
@@ -135,16 +134,25 @@ function Itemcard() {
                   <p class="text-lg font-bold text-[#424372] ">{pokemon.price}</p>
                 </div>
                 <div class="p-2.5">
-                  <button type="button" class="inline-block px-3 py-2.5 bg-[#8687bb] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#d4a695] hover:shadow-lg focus:bg-[#8687bb] focus:shadow-lg focus:outline-none focus:ring-0 active:[#d4a695] active:shadow-lg transition duration-150 ease-in-out"
-                    onClick={() => addPokemon(pokemon)}>
-                    Add
-                  </button>
+                  <label htmlFor="my-modal" className="inline-block px-3 py-2.5 bg-[#8687bb] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#d4a695] hover:shadow-lg focus:bg-[#8687bb] focus:shadow-lg focus:outline-none focus:ring-0 active:[#d4a695] active:shadow-lg transition duration-150 ease-in-out">Add</label>
+                  <input type="checkbox" id="my-modal" className="modal-toggle" />
+                  <div className="modal">
+                    <div className="modal-box">
+                      <h3 className="font-bold text-lg">Add to My Pokemons?</h3>
+                      <div className="modal-action">
+                        <label htmlFor="my-modal" className='inline-block px-3 py-2.5 bg-[#8687bb] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#d4a695] hover:shadow-lg focus:bg-[#8687bb] focus:shadow-lg focus:outline-none focus:ring-0 active:[#d4a695] active:shadow-lg transition duration-150 ease-in-out'>Cancel</label>
+                        <label htmlFor="my-modal" className="inline-block px-3 py-2.5 bg-[#8687bb] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#d4a695] hover:shadow-lg focus:bg-[#8687bb] focus:shadow-lg focus:outline-none focus:ring-0 active:[#d4a695] active:shadow-lg transition duration-150 ease-in-out"
+                          onClick={() => addPokemon(pokemon)}>Yay!</label>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           );
         })}
       </div>
+      <ToastContainer />
     </div>
   )
 }
