@@ -1,6 +1,6 @@
 import React from 'react'
-import Mypokemonitem from '../components/Mypokemonitem'
-import Navbar from '../components/Navbar'
+import Mypokemonitem from '../../components/pageGroups/dashboard/Mypokemonitem'
+import Navbar from '../../components/pageGroups/dashboard/Navbar'
 
 function Mypokemons() {
   return (

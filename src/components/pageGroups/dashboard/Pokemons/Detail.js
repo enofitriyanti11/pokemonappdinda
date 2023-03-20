@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from './Navbar'
+import Navbar from '../Navbar'
 
 function Detail() {
 
@@ -11,7 +11,7 @@ function Detail() {
 
       <div class="py-10 mx-60">
         <div class="bg-white/25 p-5 rounded-lg grid grid-cols-2">
-          <img src={require("../img/pokemon1.png")} class="h-[350px] py-auto shadow-lg rounded-lg " alt="" />
+          <img src='/img/pokemon1.png' class="h-[350px] py-auto shadow-lg rounded-lg " alt="" />
           <div class="py-20">
             <h4 class="uppercase text-[#424372] text-4xl font-bold py-3"> Pikachu</h4>
             <p class="text-black/60 mb-3">Pikachu is an Electric-type Pokémon introduced in Generation I. It evolves from Pichu when leveled up with high friendship and evolves into Raichu when exposed to a Thunder Stone.</p>

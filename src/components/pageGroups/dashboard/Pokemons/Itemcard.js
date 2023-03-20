@@ -119,7 +119,7 @@ function Itemcard() {
   return (
     <div>
       <h1 class="text-4xl font-bold text-white p-4 ml-5">Pokemon</h1>
-      <img src={require("../img/logo.png")} alt="" class="h-32 mx-auto" />
+      <img src='/img/logo.png' alt="" class="h-32 mx-auto" />
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 grid-rows-3 p-10 gap-x-7 gap-y-5">
         {pokemonsData.map(pokemon => {
           return (

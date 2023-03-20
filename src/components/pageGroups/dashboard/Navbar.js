@@ -9,7 +9,7 @@ function Navbar() {
 
     return (
         <div className="header">
-            <img src={require("../img/logo.png")} alt="" class="h-10 ml-5" />
+            <img src='/img/logo.png'alt="" class="h-10 ml-5" />
             <ul className={click ? "nav-menu active" : "nav-menu"}>
                 <li>
                     <Link to="/">Home</Link>

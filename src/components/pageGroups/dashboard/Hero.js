@@ -1,14 +1,13 @@
 import "./HeroStyle.css";
 
 import React from 'react'
-import HomeImg from "../img/home.png"
 import { Link } from "react-router-dom";
 
 function Hero() {
   return (
     <div className="hero">
       <div className="mask">
-        <img className="home-img" src={HomeImg} alt="HomeImg" />
+        <img className="home-img" src='/img/home.png'alt="HomeImg" />
       </div>
       <div className="content">
         <p>Catch Em!</p>
