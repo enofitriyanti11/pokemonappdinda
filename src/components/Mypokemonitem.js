@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 function Mypokemonitem() {
     const [pokemonData, setPokemonData] = useState([]);
@@ -22,7 +24,11 @@ function Mypokemonitem() {
         const newArray = pokemonData.filter((p) => p.id !== id);
         setPokemonData([...newArray]);
         localStorage.setItem('pokemonData', JSON.stringify([...newArray]));
+
+        toast("Delete Success !");
     };
+
+    
 
     return (
         <div>
@@ -41,10 +47,18 @@ function Mypokemonitem() {
                                         <p class="text-lg font-bold text-[#424372] ">{pokemon.price}</p>
                                     </div>
                                     <div class="p-2.5">
-                                        <button type="button" class="inline-block px-3 py-2.5 bg-[#8687bb] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#d4a695] hover:shadow-lg focus:bg-[#8687bb] focus:shadow-lg focus:outline-none focus:ring-0 active:[#d4a695] active:shadow-lg transition duration-150 ease-in-out"
-                                            onClick={() => deletePokemon(pokemon.id)}>
-                                            Delete
-                                        </button>
+                                        <label htmlFor={"my-modal" + pokemon.id} className="inline-block px-3 py-2.5 bg-[#8687bb] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#d4a695] hover:shadow-lg focus:bg-[#8687bb] focus:shadow-lg focus:outline-none focus:ring-0 active:[#d4a695] active:shadow-lg transition duration-150 ease-in-out">Delete</label>
+                                        <input type="checkbox" id={"my-modal" + pokemon.id} className="modal-toggle" />
+                                        <div className="modal">
+                                            <div className="modal-box">
+                                                <h3 className="font-bold text-lg">Delete from My Pokemons?</h3>
+                                                <div className="modal-action">
+                                                    <label htmlFor={"my-modal" + pokemon.id} className='inline-block px-3 py-2.5 bg-[#8687bb] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#d4a695] hover:shadow-lg focus:bg-[#8687bb] focus:shadow-lg focus:outline-none focus:ring-0 active:[#d4a695] active:shadow-lg transition duration-150 ease-in-out'>Cancel</label>
+                                                    <label htmlFor={"my-modal" + pokemon.id} className="inline-block px-3 py-2.5 bg-[#8687bb] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#d4a695] hover:shadow-lg focus:bg-[#8687bb] focus:shadow-lg focus:outline-none focus:ring-0 active:[#d4a695] active:shadow-lg transition duration-150 ease-in-out"
+                                                        onClick={() => deletePokemon(pokemon.id)}>Yay!</label>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -52,6 +66,7 @@ function Mypokemonitem() {
                     );
                 })}
             </div>
+            <ToastContainer />
         </div>
     )
 }
