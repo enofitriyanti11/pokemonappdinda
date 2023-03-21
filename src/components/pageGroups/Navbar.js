@@ -24,6 +24,9 @@ function Navbar() {
                     <Link to="/Todos">Todo list</Link>
                 </li>
                 <li>
+                    <Link to="/IndexUser">Users</Link>
+                </li>
+                <li>
                     <Link to="/SignIn">Logout</Link>
                 </li>
             </ul>
