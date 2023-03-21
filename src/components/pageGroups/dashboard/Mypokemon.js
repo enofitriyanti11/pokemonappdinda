@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 function Mypokemon() {
     const [pokemonData, setPokemonData] = useState([]);
+    const [pokemonDelete, setPokemonDelete] = useState(null);
 
     const handleGetItem = () => {
         const dataFromStorage = localStorage.getItem("pokemonData");
@@ -26,9 +27,11 @@ function Mypokemon() {
         localStorage.setItem('pokemonData', JSON.stringify([...newArray]));
 
         toast("Delete Success !");
+
+        setPokemonDelete(null);
+
     };
 
-    
 
     return (
         <div>
@@ -47,7 +50,7 @@ function Mypokemon() {
                                         <p class="text-lg font-bold text-[#424372] ">{pokemon.price}</p>
                                     </div>
                                     <div class="p-2.5">
-                                        <label htmlFor={"my-modal" + pokemon.id} className="inline-block px-3 py-2.5 bg-[#8687bb] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#d4a695] hover:shadow-lg focus:bg-[#8687bb] focus:shadow-lg focus:outline-none focus:ring-0 active:[#d4a695] active:shadow-lg transition duration-150 ease-in-out">Delete</label>
+                                        {/* <label htmlFor={"my-modal" + pokemon.id} className="inline-block px-3 py-2.5 bg-[#8687bb] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#d4a695] hover:shadow-lg focus:bg-[#8687bb] focus:shadow-lg focus:outline-none focus:ring-0 active:[#d4a695] active:shadow-lg transition duration-150 ease-in-out">Delete</label>
                                         <input type="checkbox" id={"my-modal" + pokemon.id} className="modal-toggle" />
                                         <div className="modal">
                                             <div className="modal-box">
@@ -58,15 +61,32 @@ function Mypokemon() {
                                                         onClick={() => deletePokemon(pokemon.id)}>Yay!</label>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> */}
+                                        <button
+                                            onClick={() => setPokemonDelete(pokemon)}
+                                            className='inline-block px-3 py-2.5 bg-[#8687bb] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#d4a695] hover:shadow-lg focus:bg-[#8687bb] focus:shadow-lg focus:outline-none focus:ring-0 active:[#d4a695] active:shadow-lg transition duration-150 ease-in-out'>
+                                            Delete
+                                        </button>
                                     </div>
                                 </div>
+                                <ToastContainer />
                             </div>
                         </div>
                     );
                 })}
+                <input type="checkbox" checked={pokemonDelete !== null} className="modal-toggle" />
+                <div className="modal modal-bottom sm:modal-middle">
+                    <div className="modal-box text-left">
+                        <h3 className="font-semibold text-slate-600 text-base">Add {pokemonDelete?.name} to My Pokemon ?</h3>
+                        <div className="modal-action">
+                            <button className="inline-block px-3 py-2.5 bg-[#8687bb] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#d4a695] hover:shadow-lg focus:bg-[#8687bb] focus:shadow-lg focus:outline-none focus:ring-0 active:[#d4a695] active:shadow-lg transition duration-150 ease-in-out"
+                                onClick={() => setPokemonDelete(null)}>Cancel</button>
+                            <button className='inline-block px-3 py-2.5 bg-[#8687bb] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#d4a695] hover:shadow-lg focus:bg-[#8687bb] focus:shadow-lg focus:outline-none focus:ring-0 active:[#d4a695] active:shadow-lg transition duration-150 ease-in-out'
+                                onClick={() => deletePokemon(pokemonDelete)}>Yes !</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <ToastContainer />
         </div>
     )
 }
