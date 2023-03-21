@@ -1,5 +1,4 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
@@ -98,6 +97,8 @@ function Itemcard() {
     },
   ];
 
+  const [pokemonAdd, setPokemonAdd] = useState(null);
+
   const addPokemon = (item) => {
     const myPokemonslocalstorage = localStorage.getItem('pokemonData')
 
@@ -112,7 +113,9 @@ function Itemcard() {
       localStorage.setItem('pokemonData', JSON.stringify(newMyPokemons));
     }
 
-      toast("Add to My Pokemons Success !");
+    toast("Add Pokemons Success !");
+
+    setPokemonAdd(null)
 
   }
 
@@ -124,17 +127,15 @@ function Itemcard() {
         {pokemonsData.map(pokemon => {
           return (
             <div class="bg-white/25 p-5 rounded-lg ">
-              <Link to="/Detail" >
-                <img src={pokemon.image} alt="" class="h-44 mx-auto" />
-                <h4 class="uppercase text-center text-[#424372] font-bold p-3">{pokemon.name}</h4>
-              </Link>
+              <img src={pokemon.image} alt="" class="h-44 mx-auto" />
+              <h4 class="uppercase text-center text-[#424372] font-bold p-3">{pokemon.name}</h4>
               <div class="flex justify-between">
                 <div>
                   <p>Price</p>
                   <p class="text-lg font-bold text-[#424372] ">{pokemon.price}</p>
                 </div>
                 <div class="p-2.5">
-                  <label htmlFor={"my-modal" + pokemon.id} className="inline-block px-3 py-2.5 bg-[#8687bb] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#d4a695] hover:shadow-lg focus:bg-[#8687bb] focus:shadow-lg focus:outline-none focus:ring-0 active:[#d4a695] active:shadow-lg transition duration-150 ease-in-out">Add</label>
+                  {/* <label htmlFor={"my-modal" + pokemon.id} className="inline-block px-3 py-2.5 bg-[#8687bb] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#d4a695] hover:shadow-lg focus:bg-[#8687bb] focus:shadow-lg focus:outline-none focus:ring-0 active:[#d4a695] active:shadow-lg transition duration-150 ease-in-out">Add</label>
                   <input type="checkbox" id={"my-modal" + pokemon.id} className="modal-toggle" />
                   <div className="modal">
                     <div className="modal-box">
@@ -145,14 +146,29 @@ function Itemcard() {
                           onClick={() => addPokemon(pokemon)}>Yay!</label>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
+                  <button
+                    onClick={() => setPokemonAdd(pokemon)}
+                    className="btn btn-sm border-0  bg-[#55a8a3] text-slate-700 font-medium text-sm uppercase rounded-md hover:bg-[#bfdfde]">
+                    Add
+                  </button>
                 </div>
               </div>
+              <ToastContainer />
             </div>
           );
         })}
+        <input type="checkbox" checked={pokemonAdd !== null} className="modal-toggle" />
+        <div className="modal modal-bottom sm:modal-middle">
+          <div className="modal-box text-left">
+            <h3 className="font-semibold text-slate-600 text-base">Add {pokemonAdd?.name} to My Pokemon ?</h3>
+            <div className="modal-action">
+              <button className="btn btn-sm" onClick={() => setPokemonAdd(null)}>Cancel</button>
+              <button className="btn btn-sm btn-accent" onClick={() => addPokemon(pokemonAdd)}>Yes !</button>
+            </div>
+          </div>
+        </div>
       </div>
-      <ToastContainer />
     </div>
   )
 }
