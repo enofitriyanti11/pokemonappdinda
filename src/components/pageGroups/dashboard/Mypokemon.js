@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
-function Mypokemonitem() {
+function Mypokemon() {
     const [pokemonData, setPokemonData] = useState([]);
 
     const handleGetItem = () => {
@@ -71,4 +71,4 @@ function Mypokemonitem() {
     )
 }
 
-export default Mypokemonitem
+export default Mypokemon

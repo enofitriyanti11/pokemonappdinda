@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 
 
-function Register(props) {
+function SignUp(props) {
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
   const [name, setName] = useState('');
@@ -16,8 +16,8 @@ function Register(props) {
     <div class="py-24 mx-60">
       <div class="bg-white/25 p-5 rounded-lg">
         <div className="auth-for-container">
-          <h4 class="uppercase text-[#424372] text-4xl font-bold py-3 text-center">Register</h4>
-          <form className="login-form" onSubmit={handleSubmit}>
+          <h4 class="uppercase text-[#424372] text-4xl font-bold py-3 text-center">Sign Up</h4>
+          <form className="signup-form" onSubmit={handleSubmit}>
             <label htmlfor="name">Full name</label>
             <input value={name} name="name" placeholder="full Name"></input>
             <label htmlfor="email">email</label>
@@ -27,8 +27,8 @@ function Register(props) {
             <div class="my-3">
               <button type="button" class="inline-block px-12 py-2.5 bg-[#8687bb] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#d4a695] hover:shadow-lg focus:bg-[#8687bb] focus:shadow-lg focus:outline-none focus:ring-0 active:[#d4a695] active:shadow-lg transition duration-150 ease-in-out">Create Account</button>
             </div>
-            <Link to="/Login">
-              <button className="link-btn">Alredy have an account? Login here</button>
+            <Link to="/SignIn">
+              <button className="link-btn">Alredy have an account? Sign In </button>
             </Link>
           </form>
         </div>
@@ -37,4 +37,4 @@ function Register(props) {
   )
 }
 
-export default Register
+export default SignUp

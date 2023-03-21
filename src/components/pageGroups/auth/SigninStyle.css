@@ -1,4 +1,4 @@
-.auth-form-container, .login-form{
+.auth-form-container, .signin-form, .signup-form{
     display: flex;
     flex-direction: column;
     min-height: 20vh;

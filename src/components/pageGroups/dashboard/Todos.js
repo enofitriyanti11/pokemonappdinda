@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from 'react'
-import Navbar from './Navbar'
+import Navbar from '../Navbar';
 import { FaTrashAlt, FaEdit } from "react-icons/fa";
 
-
-function Todolist() {
+function Todos() {
     const [newItem, setNewItem] = useState("");
     const [items, setItems] = useState([]);
     const [editItem, setEditItem] = useState(0);
 
     const handleChangeItem = (values) => {
         setItems(values)
-        localStorage.setItem("todolists", JSON.stringify(values))
+        localStorage.setItem("todos", JSON.stringify(values))
     }
 
     const handleGetItem = () => {
-        const dataFromStorage = localStorage.getItem("todolists");
+        const dataFromStorage = localStorage.getItem("todos");
         if (dataFromStorage) {
             setItems(JSON.parse(dataFromStorage))
         }
@@ -107,4 +106,4 @@ function Todolist() {
     )
 }
 
-export default Todolist
+export default Todos

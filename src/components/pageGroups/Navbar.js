@@ -21,10 +21,10 @@ function Navbar() {
                     <Link to="/Mypokemons">My Pokemons</Link>
                 </li>
                 <li>
-                    <Link to="/Todolist">Todo list</Link>
+                    <Link to="/Todos">Todo list</Link>
                 </li>
                 <li>
-                    <Link to="/Login">Logout</Link>
+                    <Link to="/SignIn">Logout</Link>
                 </li>
             </ul>
             <div className="hamburger" onClick={handleClick}>

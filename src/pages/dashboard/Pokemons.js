@@ -1,12 +1,12 @@
 import React from 'react'
-import Itemcard from '../../components/pageGroups/dashboard/Pokemons/Itemcard'
-import Navbar from '../../components/pageGroups/dashboard/Navbar'
+import Index from '../../components/pageGroups/dashboard/Pokemons/index'
+import Navbar from '../../components/pageGroups/Navbar'
 
 function Pokemons() {
   return (
     <>
     <Navbar/>
-    <Itemcard/>
+    <Index />
     </>
     
     

@@ -1,6 +1,6 @@
 import React from 'react'
-import Hero from '../../components/pageGroups/dashboard/Hero'
-import Navbar from '../../components/pageGroups/dashboard/Navbar'
+import Hero from '../../components/pageGroups/Hero'
+import Navbar from '../../components/pageGroups/Navbar'
 
 function Home() {
   return (
