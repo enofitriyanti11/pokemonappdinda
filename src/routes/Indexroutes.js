@@ -7,6 +7,7 @@ import Id from '../components/pageGroups/dashboard/Pokemons/[id]';
 import Todos from '../components/pageGroups/dashboard/Todos';
 import Mypokemons from '../pages/dashboard/My-pokemons';
 import SignUp from '../components/pageGroups/auth/SignUp';
+import IndexUser from '../service/users/IndexUser';
 
 function Indexroutes() {
   return (
@@ -20,6 +21,7 @@ function Indexroutes() {
         <Route path="/SignIn" element={<SignIn />} />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/Todos" element={<Todos />} />
+        <Route path="/IndexUser" element={<IndexUser />} />
       </Routes>
     </BrowserRouter>
     </>
