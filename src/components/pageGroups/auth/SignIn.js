@@ -3,11 +3,14 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import "./SigninStyle.css";
 import { useNavigate } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
-function SignIn () {
+
+function SignIn() {
   let navigate = useNavigate();
-  const[email, setEmail] = useState('')
-  const[password, setPassword] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
 
   const handleEmailChange = (e) => {
@@ -21,15 +24,17 @@ function SignIn () {
   const handleSubmit = (e) => {
     e.preventDefault()
     axios.post("https://reqres.in/api/login", { email, password })
-    .then((response) => {
-      console.log(response);
-      navigate('/');
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+      .then((response) => {
+        console.log(response);
+        navigate('/');
+      })
+      .catch((error) => {
+        toast.error("Invalid email and password", {
+          position: toast.POSITION.TOP_RIGHT
+        });
+      });
   }
-  
+
   return (
     <div className="py-28 mx-20 md:mx-60">
       <div className="bg-white/25 p-5 rounded-lg">
@@ -47,6 +52,7 @@ function SignIn () {
               <button className="link-btn">Don't have an account? Sign Up</button>
             </Link>
           </form>
+          <ToastContainer />
         </div>
       </div>
     </div>
