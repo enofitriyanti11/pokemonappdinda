@@ -16,22 +16,27 @@ function IndexUser() {
 
     const arrUser = users.map((data) => {
         return (
-            <p key={data.id}>
-                {data?.first_name}{data?.last_name}
-            </p>
+            <div key={data.id} className='flex flex-col items-center'>
+                <img src={data?.avatar} alt="avatar" />
+                <p className='text-[#424372] text-center'>
+                    {data?.first_name}{data?.last_name}<br/>
+                    {data?.email}
+                </p>
+            </div>
         );
     })
 
     return (
         <div>
             <Navbar />
-            <h1 class="text-4xl font-bold text-white p-4 ml-5">Users</h1>
-            <ul>
-                <li className='ml-10'>
-                    {arrUser}
-                </li>
-            </ul>
-
+            <div className='bg-white/25 my-7 mx-auto md:max-w-xl lg:max-w-2xl p-5 rounded-lg shadow-md'>
+                <h1 class="text-4xl font-bold p-4 ml-5 text-[#424372] text-center ">Users</h1>
+                <ul>
+                    <li className='grid grid-cols-3 gap-8'>
+                        {arrUser}
+                    </li>
+                </ul>
+            </div>
         </div>
     )
 }
