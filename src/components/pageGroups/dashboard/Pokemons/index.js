@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { getPokemons, getPokemonsByName } from '../../../../service/pokemons';
+import { useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 
 function Index() {
+  let navigate = useNavigate();
   const [pokemonData, setPokemons] = useState([]);
 
   useEffect(() => {
@@ -41,9 +43,9 @@ function Index() {
         {Array.from(pokemonData || []).map((item, index) => {
           return (
             <div key={index} id={item?.id} className='bg-white/25 p-5 rounded-lg'>
-              <img src={item?.img} alt="" className='h-44 mx-auto'/>
+              <img src={item?.img} alt="" onClick = {() => navigate(`/pokemons/${item.id}`)} className='h-44 mx-auto'/>
               <h5 className='uppercase text-center text-[#424372] font-bold p-3'>{item?.name}</h5>
-              <div className='items-end'>
+              <div className='text-right'>
                 <button
                   className='inline-block px-3 py-2.5 bg-[#8687bb] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#d4a695] hover:shadow-lg focus:bg-[#8687bb] focus:shadow-lg focus:outline-none focus:ring-0 active:[#d4a695] active:shadow-lg transition duration-150 ease-in-out'>
                   Add
