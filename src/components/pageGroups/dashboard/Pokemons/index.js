@@ -6,6 +6,7 @@ import { toast, ToastContainer } from 'react-toastify';
 function Index() {
   let navigate = useNavigate();
   const [pokemonData, setPokemons] = useState([]);
+  const [pokemonAdd, setPokemonAdd] = useState(null);
 
   useEffect(() => {
     fetchPokemons();
@@ -33,7 +34,27 @@ function Index() {
       console.log(error, "error");
     }
   };
-  
+
+  const addPokemon = (item) => {
+    const myPokemonslocalstorage = localStorage.getItem('pokemonData')
+
+    console.log(myPokemonslocalstorage)
+
+    if (myPokemonslocalstorage) {
+      const myPokemons = JSON.parse(myPokemonslocalstorage);
+      const newMyPokemons = [...myPokemons, { id: item.id, name: item.name, img: item.img }];
+      localStorage.setItem('pokemonData', JSON.stringify(newMyPokemons));
+    } else {
+      const newMyPokemons = [{ id: item.id, name: item.name, img: item.img }];
+      localStorage.setItem('pokemonData', JSON.stringify(newMyPokemons));
+    }
+
+    toast("Add Pokemons Success !");
+
+    setPokemonAdd(null)
+
+  }
+
   return (
     <div>
       <h1 class="text-4xl font-bold text-white p-4 ml-5">Pokemon</h1>
@@ -43,18 +64,31 @@ function Index() {
         {Array.from(pokemonData || []).map((item, index) => {
           return (
             <div key={index} id={item?.id} className='bg-white/25 p-5 rounded-lg'>
-              <img src={item?.img} alt="" onClick = {() => navigate(`/pokemons/${item.id}`)} className='h-44 mx-auto'/>
+              <img src={item?.img} alt="" onClick={() => navigate(`/pokemons/${item.id}`)} className='h-44 mx-auto' />
               <h5 className='uppercase text-center text-[#424372] font-bold p-3'>{item?.name}</h5>
               <div className='text-right'>
                 <button
+                  onClick={() => setPokemonAdd(item)}
                   className='inline-block px-3 py-2.5 bg-[#8687bb] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#d4a695] hover:shadow-lg focus:bg-[#8687bb] focus:shadow-lg focus:outline-none focus:ring-0 active:[#d4a695] active:shadow-lg transition duration-150 ease-in-out'>
                   Add
                 </button>
               </div>
+              <ToastContainer />
             </div>
-
           );
         })}
+        <input type="checkbox" checked={pokemonAdd !== null} className="modal-toggle" />
+        <div className="modal modal-bottom sm:modal-middle">
+          <div className="modal-box text-left">
+            <h3 className="font-semibold text-slate-600 text-base">Add {pokemonAdd?.name} to My Pokemon ?</h3>
+            <div className="modal-action">
+              <button className="inline-block px-3 py-2.5 bg-[#8687bb] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#d4a695] hover:shadow-lg focus:bg-[#8687bb] focus:shadow-lg focus:outline-none focus:ring-0 active:[#d4a695] active:shadow-lg transition duration-150 ease-in-out"
+                onClick={() => setPokemonAdd(null)}>Cancel</button>
+              <button className='inline-block px-3 py-2.5 bg-[#8687bb] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#d4a695] hover:shadow-lg focus:bg-[#8687bb] focus:shadow-lg focus:outline-none focus:ring-0 active:[#d4a695] active:shadow-lg transition duration-150 ease-in-out'
+                onClick={() => addPokemon(pokemonAdd)}>Yes !</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from 'react-router-dom';
 
 function Mypokemon() {
+    let navigate = useNavigate();
     const [pokemonData, setPokemonData] = useState([]);
     const [pokemonDelete, setPokemonDelete] = useState(null);
 
@@ -21,6 +23,7 @@ function Mypokemon() {
         }
     }, [])
 
+
     function deletePokemon(id) {
         const newArray = pokemonData.filter((p) => p.id !== id);
         setPokemonData([...newArray]);
@@ -38,51 +41,31 @@ function Mypokemon() {
             <h1 class="text-4xl font-bold text-white p-4 ml-5">My Pokemons</h1>
             <img src='/img/logo.png' alt="" class="h-32 mx-auto" />
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 grid-rows-3 p-10 gap-x-7 gap-y-5">
-                {pokemonData.map(pokemon => {
+                {Array.from(pokemonData || []).map((item, index) => {
                     return (
-                        <div>
-                            <div class="bg-white/25 p-5 rounded-lg ">
-                                <img src={pokemon.image} alt="" class="h-44 mx-auto" />
-                                <h4 class="uppercase text-center text-[#424372] font-bold p-3">{pokemon.name}</h4>
-                                <div class="flex justify-between">
-                                    <div>
-                                        <p>Price</p>
-                                        <p class="text-lg font-bold text-[#424372] ">{pokemon.price}</p>
-                                    </div>
-                                    <div class="p-2.5">
-                                        {/* <label htmlFor={"my-modal" + pokemon.id} className="inline-block px-3 py-2.5 bg-[#8687bb] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#d4a695] hover:shadow-lg focus:bg-[#8687bb] focus:shadow-lg focus:outline-none focus:ring-0 active:[#d4a695] active:shadow-lg transition duration-150 ease-in-out">Delete</label>
-                                        <input type="checkbox" id={"my-modal" + pokemon.id} className="modal-toggle" />
-                                        <div className="modal">
-                                            <div className="modal-box">
-                                                <h3 className="font-bold text-lg">Delete from My Pokemons?</h3>
-                                                <div className="modal-action">
-                                                    <label htmlFor={"my-modal" + pokemon.id} className='inline-block px-3 py-2.5 bg-[#8687bb] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#d4a695] hover:shadow-lg focus:bg-[#8687bb] focus:shadow-lg focus:outline-none focus:ring-0 active:[#d4a695] active:shadow-lg transition duration-150 ease-in-out'>Cancel</label>
-                                                    <label htmlFor={"my-modal" + pokemon.id} className="inline-block px-3 py-2.5 bg-[#8687bb] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#d4a695] hover:shadow-lg focus:bg-[#8687bb] focus:shadow-lg focus:outline-none focus:ring-0 active:[#d4a695] active:shadow-lg transition duration-150 ease-in-out"
-                                                        onClick={() => deletePokemon(pokemon.id)}>Yay!</label>
-                                                </div>
-                                            </div>
-                                        </div> */}
-                                        <button
-                                            onClick={() => setPokemonDelete(pokemon)}
-                                            className='inline-block px-3 py-2.5 bg-[#8687bb] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#d4a695] hover:shadow-lg focus:bg-[#8687bb] focus:shadow-lg focus:outline-none focus:ring-0 active:[#d4a695] active:shadow-lg transition duration-150 ease-in-out'>
-                                            Delete
-                                        </button>
-                                    </div>
-                                </div>
-                                <ToastContainer />
+                        <div key={index} id={item?.id} className='bg-white/25 p-5 rounded-lg'>
+                            <img src={item?.img} alt="" onClick={() => navigate(`/pokemons/${item.id}`)} className='h-44 mx-auto' />
+                            <h5 className='uppercase text-center text-[#424372] font-bold p-3'>{item?.name}</h5>
+                            <div className='text-right'>
+                                <button
+                                    onClick={() => setPokemonDelete(item)}
+                                    className='inline-block px-3 py-2.5 bg-[#8687bb] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#d4a695] hover:shadow-lg focus:bg-[#8687bb] focus:shadow-lg focus:outline-none focus:ring-0 active:[#d4a695] active:shadow-lg transition duration-150 ease-in-out'>
+                                    Delete
+                                </button>
                             </div>
+                            <ToastContainer />
                         </div>
                     );
                 })}
                 <input type="checkbox" checked={pokemonDelete !== null} className="modal-toggle" />
                 <div className="modal modal-bottom sm:modal-middle">
                     <div className="modal-box text-left">
-                        <h3 className="font-semibold text-slate-600 text-base">Add {pokemonDelete?.name} to My Pokemon ?</h3>
+                        <h3 className="font-semibold text-slate-600 text-base">Delete {pokemonDelete?.name} from My Pokemon ?</h3>
                         <div className="modal-action">
                             <button className="inline-block px-3 py-2.5 bg-[#8687bb] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#d4a695] hover:shadow-lg focus:bg-[#8687bb] focus:shadow-lg focus:outline-none focus:ring-0 active:[#d4a695] active:shadow-lg transition duration-150 ease-in-out"
                                 onClick={() => setPokemonDelete(null)}>Cancel</button>
                             <button className='inline-block px-3 py-2.5 bg-[#8687bb] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#d4a695] hover:shadow-lg focus:bg-[#8687bb] focus:shadow-lg focus:outline-none focus:ring-0 active:[#d4a695] active:shadow-lg transition duration-150 ease-in-out'
-                                onClick={() => deletePokemon(pokemonDelete)}>Yes !</button>
+                                onClick={() => deletePokemon(pokemonDelete.id)}>Yes !</button>
                         </div>
                     </div>
                 </div>
