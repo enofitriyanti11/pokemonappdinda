@@ -25,8 +25,8 @@ function SignIn() {
     e.preventDefault()
     axios.post("https://reqres.in/api/login", { email, password })
       .then((response) => {
-        console.log(response);
-        navigate('/');
+        localStorage.setItem("authToken", true);
+        window.location.href = "/"
       })
       .catch((error) => {
         toast.error("Invalid email and password", {

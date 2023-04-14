@@ -2,24 +2,42 @@ import "./NavbarStyle.css"
 import React, { useState } from 'react'
 import { Link } from "react-router-dom"
 import { FaBars, FaTimes } from "react-icons/fa"
+import { isLoggedIn } from "../../service/auth"
+import { useNavigate } from "react-router-dom"
 
 function Navbar() {
     const [click, setClick] = useState(false);
     const handleClick = () => setClick(!click);
+    const [modal, setModal] = useState(false);
+    const navigate = useNavigate();
+
+    function handleOnClick() {
+        localStorage.removeItem('authToken');
+        window.location.href = "/"
+      }
+    
+      function handleCancel() {
+        setModal(false); 
+    }
 
     return (
         <div className="header">
-            <img src='/img/logo.png'alt="" class="h-10 ml-5" />
+            <img src='/img/logo.png' alt="" class="h-10 ml-5" />
             <ul className={click ? "nav-menu active" : "nav-menu"}>
                 <li>
                     <Link to="/">Home</Link>
                 </li>
-                <li>
-                    <Link to="/Pokemons">Pokemons</Link>
-                </li>
-                <li>
-                    <Link to="/Mypokemons">My Pokemons</Link>
-                </li>
+                {isLoggedIn()  && (
+                    <>
+                        <li>
+                            <Link to="/Pokemons">Pokemons</Link>
+                        </li>
+                        <li>
+                            <Link to="/Mypokemons">My Pokemons</Link>
+                        </li>
+                    </>
+                )}
+
                 <li>
                     <Link to="/Todos">Todo list</Link>
                 </li>
@@ -27,7 +45,19 @@ function Navbar() {
                     <Link to="/IndexUser">Users</Link>
                 </li>
                 <li>
-                    <Link to="/SignIn">Logout</Link>
+                    <label htmlFor="my-modal" className="btn btn-sm btn-outline text-white">LogOut</label>
+                    <input type="checkbox" id="my-modal" className="modal-toggle" checked={modal} onChange={() => setModal(!modal)} />
+                    <div className="modal">
+                        <div className="modal-box">
+                            <h3 className="font-bold text-lg">Are you sure to exit?</h3>
+                            <div className="modal-action">
+                                <button className="inline-block py-2.5 bg-[#8687bb] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#d4a695] hover:shadow-lg focus:bg-[#8687bb] focus:shadow-lg focus:outline-none focus:ring-0 active:[#d4a695] active:shadow-lg transition duration-150 ease-in-out"
+                                   onClick={handleCancel}>Cancel</button>
+                                <button className="inline-block py-2.5 bg-[#8687bb] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#d4a695] hover:shadow-lg focus:bg-[#8687bb] focus:shadow-lg focus:outline-none focus:ring-0 active:[#d4a695] active:shadow-lg transition duration-150 ease-in-out"
+                                    onClick={handleOnClick}>Yay!</button>
+                            </div>
+                        </div>
+                    </div>
                 </li>
             </ul>
             <div className="hamburger" onClick={handleClick}>
