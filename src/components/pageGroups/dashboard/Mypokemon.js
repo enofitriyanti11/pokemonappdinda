@@ -59,8 +59,8 @@ function Mypokemon() {
                 })}
                 <input type="checkbox" checked={pokemonDelete !== null} className="modal-toggle" />
                 <div className="modal modal-bottom sm:modal-middle">
-                    <div className="modal-box text-left">
-                        <h3 className="font-semibold text-slate-600 text-base">Delete {pokemonDelete?.name} from My Pokemon ?</h3>
+                    <div className="modal-box text-left bg-slate-800">
+                        <h3 className="font-semibold text-white text-base">Delete {pokemonDelete?.name} from My Pokemon ?</h3>
                         <div className="modal-action">
                             <button className="inline-block px-3 py-2.5 bg-[#8687bb] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#d4a695] hover:shadow-lg focus:bg-[#8687bb] focus:shadow-lg focus:outline-none focus:ring-0 active:[#d4a695] active:shadow-lg transition duration-150 ease-in-out"
                                 onClick={() => setPokemonDelete(null)}>Cancel</button>
