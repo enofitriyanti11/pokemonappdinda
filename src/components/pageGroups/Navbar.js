@@ -14,10 +14,10 @@ function Navbar() {
     function handleOnClick() {
         localStorage.removeItem('authToken');
         window.location.href = "/"
-      }
-    
-      function handleCancel() {
-        setModal(false); 
+    }
+
+    function handleCancel() {
+        setModal(false);
     }
 
     return (
@@ -27,7 +27,7 @@ function Navbar() {
                 <li>
                     <Link to="/">Home</Link>
                 </li>
-                {isLoggedIn()  && (
+                {isLoggedIn() && (
                     <>
                         <li>
                             <Link to="/Pokemons">Pokemons</Link>
@@ -45,14 +45,18 @@ function Navbar() {
                     <Link to="/IndexUser">Users</Link>
                 </li>
                 <li>
-                    <label htmlFor="my-modal" className="btn btn-sm btn-outline text-white">LogOut</label>
+                    {isLoggedIn() ? (
+                        <button className="btn btn-sm btn-outline text-white" style={{ textTransform: 'none'}} onClick={() => setModal(true)}>Log Out</button>
+                    ) : (
+                        <button className="btn btn-sm btn-outline text-white" style={{ textTransform: 'none' }} onClick={() => navigate('/SignIn')}>Log In</button>
+                    )}
                     <input type="checkbox" id="my-modal" className="modal-toggle" checked={modal} onChange={() => setModal(!modal)} />
                     <div className="modal">
                         <div className="modal-box">
                             <h3 className="font-bold text-lg">Are you sure to exit?</h3>
                             <div className="modal-action">
                                 <button className="inline-block py-2.5 bg-[#8687bb] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#d4a695] hover:shadow-lg focus:bg-[#8687bb] focus:shadow-lg focus:outline-none focus:ring-0 active:[#d4a695] active:shadow-lg transition duration-150 ease-in-out"
-                                   onClick={handleCancel}>Cancel</button>
+                                    onClick={handleCancel}>Cancel</button>
                                 <button className="inline-block py-2.5 bg-[#8687bb] text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-[#d4a695] hover:shadow-lg focus:bg-[#8687bb] focus:shadow-lg focus:outline-none focus:ring-0 active:[#d4a695] active:shadow-lg transition duration-150 ease-in-out"
                                     onClick={handleOnClick}>Yay!</button>
                             </div>
