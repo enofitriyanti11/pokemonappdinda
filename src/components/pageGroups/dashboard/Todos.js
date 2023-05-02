@@ -62,14 +62,15 @@ function Todos() {
             </>
 
             <div class="p-16">
-                <div class="bg-white/25 mx-auto md:max-w-xl lg:max-w-2xl p-5 rounded-lg text-center shadow-md">
-                    <h1 className="text-2xl font-bold text-[#424372] ">Todo List</h1>
+                <div class="bg-white/25 mx-auto max-w-sm lg:max-w-lg p-5 rounded-lg text-center shadow-md">
+                    <h1 className="text-2xl lg:text-3xl font-bold text-[#424372] ">Todo List</h1>
                     <form onSubmit={(e) => {
                         e.preventDefault()
                         AddItem()
                     }}>
-                        <div class="flex p-5 gap-4 justify-center ">
+                        <div class="flex p-5 gap-4 justify-center ml-4">
                             <input
+                                style={{ width: '100%' }}
                                 type="text"
                                 value={newItem}
                                 onChange={e => setNewItem(e.target.value)}></input>
