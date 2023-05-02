@@ -40,7 +40,7 @@ function Mypokemon() {
         <div>
             <h1 class="text-4xl font-bold text-white p-4 ml-5">My Pokemons</h1>
             <img src='/img/logo.png' alt="" class="h-32 mx-auto" />
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 grid-rows-3 p-10 gap-x-7 gap-y-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 grid-rows-3 p-12 md:p-16 gap-x-7 gap-y-5">
                 {Array.from(pokemonData || []).map((item, index) => {
                     return (
                         <div key={index} id={item?.id} className='bg-white/25 p-5 rounded-lg'>
