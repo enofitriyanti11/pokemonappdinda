@@ -66,21 +66,21 @@ function DetailPokemons() {
   return (
     <div>
       <Navbar />
-      <div className="bg-white/25 items-center mt-10 px-14 p-4 rounded-3xl mx-auto max-w-[40rem] lg:max-w-[60rem] grid lg:grid-cols-2">
+      <div className="bg-white/25 items-center mt-10 px-8 md:px-14 p-4 rounded-3xl mx-auto max-w-xs md:max-w-[55rem] grid lg:grid-cols-2">
         <div className="hidden lg:block px-5">
           <img src={pokemonData?.img} alt="event" className="w-[300px] rounded-xl shadow-xl " />
         </div>
-        <div className="lg:py-12 pr-10 ">
+        <div className="py-2 wd:py-12 ">
           <h2 className="text-3xl font-semibold text-slate-700 md:text-3xl lg:text-4xl">{pokemonData?.name}</h2>
           <img src={pokemonData?.img} alt="event"
             className="pt-4 rounded-xl shadow-xl w-[250px] mx-auto sm:py-10 sm:w-[300px] lg:hidden" />
-          <h6 className='font-bold'>Moves</h6>
-          <p className="pt-7 text-slate-600 text-justify sm:pt-5 lg:pt-7 text-sm">
+          <h6 className='font-bold mt-10'>Moves</h6>
+          <p className=" text-slate-600 text-justify text-sm">
             {Array.from(pokemonData?.moves || [])
               .slice(0, 30)
               .map((item) => {
                 return (
-                  <span style={{ marginRight: 6 }}>{item?.move?.name}</span>
+                  <span style={{ marginRight: 4 }}>{item?.move?.name}</span>
                 );
               })}
           </p>
@@ -88,7 +88,7 @@ function DetailPokemons() {
             <div className="text-center pt-8 font-bold" >
               <button
                 onClick={() => setPokemonAdd(pokemonData)}
-                className="rounded-3xl bg-[#8687bb] px-16 py-2 text-slate-800 uppercase hover:bg-[#d4a695]" >
+                className="rounded-3xl bg-[#8687bb] px-8 md:px-16 py-2 text-slate-800 uppercase hover:bg-[#d4a695]" >
                 Add To My Pokemon
               </button>
             </div>
@@ -108,7 +108,7 @@ function DetailPokemons() {
           </div>
         </div>
       </div>
-      <h1 className="text-3xl font-extrabold text-slate-700 py-10 px-36">More Pokemons</h1>
+      <h1 className=" text-xl md:text-3xl font-extrabold text-slate-700 py-6 md:py-10 px-14 md:px-36">More Pokemons</h1>
     </div>
   )
 }
