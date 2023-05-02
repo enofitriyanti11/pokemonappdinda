@@ -29,10 +29,10 @@ function IndexUser() {
     return (
         <div>
             <Navbar />
-            <div className='bg-white/25 my-7 mx-auto md:max-w-xl lg:max-w-2xl p-5 rounded-lg shadow-md'>
+            <div className='bg-white/25 my-7 mx-auto max-w-xs md:max-w-lg lg:max-w-xl p-5 rounded-lg shadow-md'>
                 <h1 class="text-4xl font-bold p-4 ml-5 text-[#424372] text-center ">Users</h1>
                 <ul>
-                    <li className='grid grid-cols-3 gap-8'>
+                    <li className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
                         {arrUser}
                     </li>
                 </ul>
