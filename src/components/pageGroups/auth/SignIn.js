@@ -36,7 +36,7 @@ function SignIn() {
   }
 
   return (
-    <div className="py-28 mx-20">
+    <div className="py-28 mx-5">
       <div className="bg-white/25 p-5 mx-auto max-w-xs rounded-lg">
         <div className="auth-for-container">
           <h4 className='uppercase text-[#424372] text-4xl font-bold py-3 text-center'>Login</h4>
