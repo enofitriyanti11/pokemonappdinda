@@ -61,7 +61,7 @@ function Todos() {
                 <Navbar />
             </>
 
-            <div class="p-16">
+            <div class="p-7">
                 <div class="bg-white/25 mx-auto max-w-sm p-5 rounded-lg text-center shadow-md">
                     <h1 className="text-2xl lg:text-3xl font-bold text-[#424372] ">Todo List</h1>
                     <form onSubmit={(e) => {
